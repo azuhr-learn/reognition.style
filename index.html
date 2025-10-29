@@ -1,302 +1,345 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Recognition Style Quiz</title>
-    <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 20px;
-      background-color: #f9f9f9;
-      color: #00214F;
-    }
-    h1 {
-      text-align: center;
-      color: #0053B9;
-      font-size: 2.4em;
-      margin-bottom: 10px;
-    }
-    .instructions {
-      max-width: 900px;
-      margin: 0 auto 30px;
-      font-size: 16px;
-      line-height: 1.6;
-      background: #fff;
-      padding: 15px 20px;
-      border-radius: 8px;
-      border-left: 6px solid #1F7BE7;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .instructions strong {
-      font-weight: bold;
-      color: #0053B9;
-    }
-    .group {
-      max-width: 900px;
-      margin: 20px auto;
-      padding: 20px;
-      background: #fff;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    }
-    .group h2 {
-      color: #1F7BE7;
-      font-size: 1.4em;
-      font-weight: 600;
-      margin-bottom: 15px;
-      border-bottom: 3px solid #00D9BA;
-      padding-bottom: 8px;
-    }
-    .group h2 span {
-      font-weight: 600;
-    }
-    .question {
-      margin-bottom: 15px;
-    }
-    .question label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
-    .rating-options {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .rating-options label {
-      background: #f0f4ff;
-      padding: 6px 10px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background 0.3s;
-      flex: 1 1 60px;
-      text-align: center;
-    }
-    .rating-options input {
-      margin-right: 4px;
-    }
-    .rating-options label:hover {
-      background: #dbe8ff;
-    }
-    .warning {
-      color: #FF8367;
-      font-size: 14px;
-      margin-top: 10px;
-      display: none;
-      font-weight: 500;
-    }
-    .buttons {
-      text-align: center;
-      margin: 30px 0;
-    }
-    button {
-      background-color: #00D9BA;
-      color: #fff;
-      border: none;
-      padding: 12px 24px;
-      margin: 10px;
-      font-size: 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s;
-      width: 180px;
-    }
-    #submitBtn {
-      background-color: #1F7BE7; /* Different color for submit */
-    }
-    #submitBtn:hover {
-      background-color: #0053B9;
-    }
-    button:hover {
-      background-color: #FF8367;
-    }
-    #results-container {
-      text-align: center;
-      margin-top: 30px;
-    }
-    #results-title {
-      font-size: 1.6em;
-      color: #0053B9;
-      margin-bottom: 10px;
-    }
-    table.results-table {
-      width: 90%;
-      max-width: 500px;
-      border-collapse: collapse;
-      margin: 10px auto;
-      font-size: 15px;
-      background: #fff;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    table.results-table th {
-      background: #1F7BE7;
-      color: #fff;
-      font-weight: 600;
-    }
-    table.results-table th, table.results-table td {
-      padding: 10px 18px;
-      border: 1px solid #ccc;
-      text-align: center;
-    }
-    table.results-table tr:hover {
-      background-color: #9393FF;
-      color: #fff;
-    }
-    .interpretation {
-      max-width: 900px;
-      margin: 20px auto;
-      font-size: 15px;
-      color: #333;
-      background: #fff;
-      padding: 18px;
-      border-radius: 8px;
-      border-left: 6px solid #00D9BA;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      display: none;
-    }
+  <meta charset="UTF-8">
+  <title>Recognition Style Quiz</title>
+    <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f9f9f9;
+      color: #00214F;
+    }
+    h1 {
+      text-align: center;
+      color: #0053B9;
+      font-size: 2.4em;
+      margin-bottom: 10px;
+    }
+    .instructions {
+      max-width: 900px;
+      margin: 0 auto 30px;
+      font-size: 16px;
+      line-height: 1.6;
+      background: #fff;
+      padding: 15px 20px;
+      border-radius: 8px;
+      border-left: 6px solid #1F7BE7;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .instructions strong {
+      font-weight: bold;
+      color: #0053B9;
+    }
+    .group {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .group h2 {
+      color: #1F7BE7;
+      font-size: 1.4em;
+      font-weight: 600;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #00D9BA;
+      padding-bottom: 8px;
+    }
+    .group h2 span {
+      font-weight: 600;
+    }
+    .question {
+      margin-bottom: 15px;
+    }
+    .question label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .rating-options {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .rating-options label {
+      background: #f0f4ff;
+      padding: 6px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+      flex: 1 1 60px;
+      text-align: center;
+    }
+    .rating-options input {
+      margin-right: 4px;
+    }
+    .rating-options label:hover {
+      background: #dbe8ff;
+    }
+    .warning {
+      color: #FF8367;
+      font-size: 14px;
+      margin-top: 10px;
+      display: none;
+      font-weight: 500;
+    }
+    .buttons {
+      text-align: center;
+      margin: 30px 0;
+    }
+    button {
+      background-color: #00D9BA;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      margin: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 180px;
+    }
+    button:hover {
+      background-color: #FF8367;
+    }
+    #results-container {
+      text-align: center;
+      margin-top: 30px;
+    }
+    #results-title {
+      font-size: 1.6em;
+      color: #0053B9;
+      margin-bottom: 10px;
+    }
+    table.results-table {
+      width: 90%;
+      max-width: 500px;
+      border-collapse: collapse;
+      margin: 10px auto;
+      font-size: 15px;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    table.results-table th {
+      background: #1F7BE7;
+      color: #fff;
+      font-weight: 600;
+    }
+    table.results-table th, table.results-table td {
+      padding: 10px 18px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+    table.results-table tr:hover {
+      background-color: #9393FF;
+      color: #fff;
+    }
+    .interpretation {
+      max-width: 900px;
+      margin: 20px auto;
+      font-size: 15px;
+      color: #333;
+      background: #fff;
+      padding: 18px;
+      border-radius: 8px;
+      border-left: 6px solid #00D9BA;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: none;
+    }
 
-    /* ✅ Print Styling: Hide elements not needed for a clean printout */
-    @media print {
-      .buttons, .instructions, .group {
-        display: none;
-      }
-      #results-container {
-        margin-top: 0;
-        padding-top: 0;
-      }
-      h1 {
-        margin-top: 0;
-      }
-      table.results-table {
-        box-shadow: none; /* Remove shadow for printing */
-        border: 2px solid #000;
-      }
-      table.results-table tr:hover {
-        background-color: inherit; /* Don't print hover color */
-        color: inherit;
-      }
-      .interpretation {
-        display: block !important; /* Ensure interpretation shows on print */
-        box-shadow: none;
-        border-left: 6px solid #00D9BA;
-      }
-    }
+    /* ✅ Responsive Design */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.8em;
+      }
+      .instructions {
+        font-size: 14px;
+        padding: 12px;
+      }
+      .group {
+        padding: 15px;
+      }
+      .group h2 {
+        font-size: 1.2em;
+      }
+      .rating-options {
+        flex-direction: row;
+        gap: 8px;
+      }
+      button {
+        width: 140px;
+        font-size: 14px;
+      }
+      table.results-table {
+        font-size: 14px;
+      }
+    }
 
-    /* ✅ Responsive Design */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 1.8em;
-      }
-      .instructions {
-        font-size: 14px;
-        padding: 12px;
-      }
-      .group {
-        padding: 15px;
-      }
-      .group h2 {
-        font-size: 1.2em;
-      }
-      .rating-options {
-        flex-direction: row;
-        gap: 8px;
-      }
-      button {
-        width: 140px;
-        font-size: 14px;
-      }
-      table.results-table {
-        font-size: 14px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .rating-options label {
-        flex: 1 1 40%;
-      }
-      button {
-        width: 100%;
-        margin: 8px 0;
-      }
-    }
-  </style>
+    @media (max-width: 480px) {
+      .rating-options label {
+        flex: 1 1 40%;
+      }
+      button {
+        width: 100%;
+        margin: 8px 0;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <h1>Recognition Style Quiz</h1>
-  <div class="instructions">
-    <strong>Instructions:</strong> This tool helps you discover your preferred recognition style at work. Read each group of statements and rank the five items in each group from 1 (Least like me) to 5 (Most like me). Use each number only once per group.
-  </div>
+  <h1>Recognition Style Quiz</h1>
+  <div class="instructions">
+    <strong>Instructions:</strong> This tool helps you discover your preferred recognition style at work. Read each group of statements and rank the five items in each group from 1 (Least like me) to 5 (Most like me). Use each number only once per group.
+  </div>
 
-  <div id="groups"></div>
+  <div id="groups"></div>
 
-  <div class="buttons">
-    <button id="submitBtn">Submit</button>
-    <button id="resetBtn">Reset</button>
-        <button id="printBtn">Print Results 🖨️</button>
-  </div>
+  <div class="buttons">
+    <button id="submitBtn">Submit</button>
+    <button id="resetBtn">Reset</button>
+  </div>
 
-  <div id="results-container">
-    <h3 id="results-title" style="display:none;">Results</h3>
-    <div id="results"></div>
-  </div>
+  <div id="results-container">
+    <h3 id="results-title" style="display:none;">Results</h3>
+    <div id="results"></div>
+  </div>
 
-  <div class="interpretation" id="interpretation">
-    <strong>Interpretation:</strong> Your highest score represents your primary recognition style. A close second may indicate a strong secondary preference.<br>
-    <strong>Tip:</strong> Share your results with your team or manager to help them understand how you like to be recognised.
-  </div>
+  <div class="interpretation" id="interpretation">
+    <strong>Interpretation:</strong> Your highest score represents your primary recognition style. A close second may indicate a strong secondary preference.<br>
+    <strong>Tip:</strong> Share your results with your team or manager to help them understand how you like to be recognised.
+  </div>
 
-  <script>
-    function printResults() {
-      // Only prints if results are visible
-      if (document.getElementById('results-title').style.display !== 'none') {
-        window.print();
-      } else {
-        alert("Please submit the quiz first to see and print your results.");
-      }
-    }
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const groupsData = {
+        A: {
+          title: "Group A - What makes me feel most recognised at work?",
+          questions: [
+            "I value it when someone tells me specifically what I did well.",
+            "I like it when people publicly acknowledge my contribution.",
+            "I appreciate receiving a small reward (gift, voucher, treat) as a thank you.",
+            "I feel recognised when someone helps me with a task or goes out of their way for me.",
+            "I enjoy being offered a new opportunity (project, learning, leadership)."
+          ]
+        },
+        B: {
+          title: "Group B - What motivates me at work?",
+          questions: [
+            "Praise that is sincere and specific.",
+            "Celebrations or shout-outs in team meetings.",
+            "A personalised thank-you card, email, or token gift.",
+            "Acts of support—like someone staying late to help me.",
+            "Being trusted with more responsibility or professional development."
+          ]
+        },
+        C: {
+          title: "Group C - What feels least like recognition to me?",
+          questions: [
+            "Vague compliments like “good job.”",
+            "Being put on the spot in front of the team.",
+            "Getting a generic gift card or impersonal token.",
+            "Offers of help I didn’t ask for.",
+            "Being given more work instead of thanks."
+          ]
+        },
+        D: {
+          title: "Group D - What kind of appreciation is most meaningful?",
+          questions: [
+            "A manager or peer telling me directly what they appreciated.",
+            "A team lunch or group celebration.",
+            "A small gift that shows thought.",
+            "Someone stepping in to help without being asked.",
+            "Career growth, training, or a chance to lead."
+          ]
+        }
+      };
 
-    window.addEventListener('DOMContentLoaded', () => {
-      const groupsData = {
-        // ... (groupsData object remains the same)
-        A: {
-          title: "Group A - What makes me feel most recognised at work?",
-          questions: [
-            "I value it when someone tells me specifically what I did well.",
-            "I like it when people publicly acknowledge my contribution.",
-            "I appreciate receiving a small reward (gift, voucher, treat) as a thank you.",
-            "I feel recognised when someone helps me with a task or goes out of their way for me.",
-            "I enjoy being offered a new opportunity (project, learning, leadership)."
-          ]
-        },
-        B: {
-          title: "Group B - What motivates me at work?",
-          questions: [
-            "Praise that is sincere and specific.",
-            "Celebrations or shout-outs in team meetings.",
-            "A personalised thank-you card, email, or token gift.",
-            "Acts of support—like someone staying late to help me.",
-            "Being trusted with more responsibility or professional development."
-          ]
-        },
-        C: {
-          title: "Group C - What feels least like recognition to me?",
-          questions: [
-            "Vague compliments like “good job.”",
-            "Being put on the spot in front of the team.",
-            "Getting a generic gift card or impersonal token.",
-            "Offers of help I didn’t ask for.",
-            "Being given more work instead of thanks."
-          ]
-        },
-        D: {
-          title: "Group D - What kind of appreciation is most meaningful?",
-          questions: [
-            "A manager or peer telling me directly what they appreciated.",
-            "A team lunch or group celebration.",
-            "A small gift that shows thought.",
-            "Someone stepping in to help without being asked.",
+      const groupsContainer = document.getElementById('groups');
+      for (const [groupKey, groupData] of Object.entries(groupsData)) {
+        const div = document.createElement('div');
+        div.className = 'group';
+        div.innerHTML = `<h2>${groupData.title}</h2><div class="warning" id="warning-${groupKey}"></div>`;
+        groupData.questions.forEach((q, i) => {
+          let optionsHTML = '';
+          for (let rating = 1; rating <= 5; rating++) {
+            optionsHTML += `<label><input type="radio" name="${groupKey}${i+1}" value="${rating}"> ${rating}</label>`;
+          }
+          div.innerHTML += `
+            <div class="question">
+              <label>${groupKey}${i+1}. ${q}</label>
+              <div class="rating-options">${optionsHTML}</div>
+            </div>`;
+        });
+        groupsContainer.appendChild(div);
+      }
+
+      // Inline warning for duplicate ratings
+      document.querySelectorAll('.group').forEach(groupDiv => {
+        const radios = groupDiv.querySelectorAll('input[type="radio"]');
+        const warningDiv = groupDiv.querySelector('.warning');
+        radios.forEach(radio => {
+          radio.addEventListener('change', (e) => {
+            const selectedValue = radio.value;
+            const alreadySelected = Array.from(groupDiv.querySelectorAll('input[type="radio"]:checked'))
+              .filter(r => r.value === selectedValue && r.name !== radio.name);
+
+            if (alreadySelected.length > 0) {
+              warningDiv.textContent = `You’ve already used rating ${selectedValue} in this group. Please choose a different number.`;
+              warningDiv.style.display = 'block';
+              e.target.checked = false;
+              setTimeout(() => warningDiv.style.display = 'none', 3000);
+              return;
+            }
+          });
+        });
+      });
+
+      // Submit logic
+      document.getElementById('submitBtn').addEventListener('click', () => {
+        const totalQuestions = Object.values(groupsData).reduce((sum, g) => sum + g.questions.length, 0);
+        const answered = document.querySelectorAll('input[type="radio"]:checked').length;
+
+        if (answered < totalQuestions) {
+          alert("Please answer all questions before submitting.");
+          return;
+        }
+
+        const styles = ["Words of Affirmation","Public Recognition","Tangible Rewards","Supportive Actions","Growth Opportunities"];
+        const totals = [0,0,0,0,0];
+        const mapping = {A:[0,1,2,3,4],B:[0,1,2,3,4],C:[0,1,2,3,4],D:[0,1,2,3,4]};
+        for (const [groupKey, groupData] of Object.entries(groupsData)) {
+          groupData.questions.forEach((_, i) => {
+            const selected = document.querySelector(`input[name="${groupKey}${i+1}"]:checked`);
+            let val = selected ? parseInt(selected.value) : 0;
+            if (groupKey === 'C') val = val === 1 ? 5 : val === 2 ? 4 : val === 4 ? 2 : val === 5 ? 1 : 3;
+            totals[mapping[groupKey][i]] += val;
+          });
+        }
+
+        let html = `<table class="results-table"><tr><th>Recognition Style</th><th>Totals</th></tr>`;
+        styles.forEach((style,i)=>{html+=`<tr><td>${style}</td><td>${totals[i]}</td></tr>`});
+        html+=`</table>`;
+        document.getElementById('results').innerHTML = html;
+        document.getElementById('results-title').style.display = 'block';
+        document.getElementById('interpretation').style.display = 'block';
+      });
+
+      // Reset logic
+      document.getElementById('resetBtn').addEventListener('click', () => {
+        document.querySelectorAll('input[type="radio"]').forEach(input => {input.checked=false;input.disabled=false;});
+        document.getElementById('results').innerHTML='';
+        document.getElementById('results-title').style.display='none';
+        document.getElementById('interpretation').style.display='none';
+      });
+    });
+  </script>
+</body>
+</html>
